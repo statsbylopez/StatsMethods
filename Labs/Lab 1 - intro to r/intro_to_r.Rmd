@@ -29,7 +29,7 @@ get to that stage, however, you need to build some basic fluency in R. Today we
 begin with the fundamental building blocks of R and RStudio: the interface, 
 reading in data, and basic commands.
 
-Go ahead and launch RStudio. You should see a window that looks like the image 
+Go ahead and launch RStudio by going to [r.skidmore.edu](r.skidmore.edu). You should see a window that looks like the image 
 shown below.
 
 ![](more/r-interface-2016.png)
