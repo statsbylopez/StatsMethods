@@ -1,0 +1,36 @@
+---
+title: "Lab 1: Intro to R"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document:
+    toc:  true
+    toc_float:  true
+    code_folding:  hide
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro 1.1, 1.4, 1.6, 1.10, 1.14,1.15, 1.17, 1.26, 1.27 (Note: these are located in section 1.8 at the end of the chapter)
+
+### Part II: 
+
+Lab 1: intro to R questions 4 - 7
+
+
+
