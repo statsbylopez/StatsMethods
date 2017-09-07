@@ -448,7 +448,6 @@ The book titled "Getting used to R, RStudio, and R Markdown" by Chester Ismay, w
 Note that some of the code on these cheatsheets may be too advanced for this course,
 however majority of it will become useful throughout the semester.
 
-As a final thought, I really liked this. Learning R will not come easy, but the payoffs are, um, sweet 
+As a final thought, I really liked [this tweet](https://twitter.com/dsquintana/status/904728820904845312). Learning R will not come easy, but the payoffs are, um, sweet 
 
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/dsquintana/status/904728820904845312"</a></blockquote>
