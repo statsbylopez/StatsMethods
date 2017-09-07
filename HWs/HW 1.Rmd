@@ -3,10 +3,7 @@ title: "Lab 1: Intro to R"
 author: "Mike Lopez"
 date: "September 2017"
 output:
-  html_document:
-    toc:  true
-    toc_float:  true
-    code_folding:  hide
+  html_document
 ---
 
 ```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
