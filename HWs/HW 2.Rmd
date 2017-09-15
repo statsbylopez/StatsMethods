@@ -1,0 +1,50 @@
+---
+title: "HW 2"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro Chapter 1: 1.21, 1.36, 1.37, 1.38, 1.40, 1.42, 1.44, 1.49
+
+### Part II: 
+
+Refer to the `nycflights` data as per Lab 2. 
+
+1.  Mutate the data frame so that it includes a new variable that contains the 
+    average speed, `avg_speed` traveled by the plane for each flight (in mph).
+    **Hint:** Average speed can be calculated as distance divided by
+    number of hours of travel, and note that `air_time` is given in minutes.
+    
+1.  Make a scatterplot of `avg_speed` vs. `distance`. Describe the relationship
+    between average speed and distance.
+    **Hint:** Use `geom = "point"`.
+
+1.  Make a data set containing only flights that travelled in and out of Boston (destination `BOS`) during the month of January. How many flights meet this criteria?
+
+1. Using this data set with only Boston flights, identify the the day of the month (1, 2, ... 31) with the longest average arrival delay. 
+
+1. Explain why average delay may not be best choice of metrics regarding delays, and propose a better one. Is your answer to (4) the same using a newer metric?
+
+1. Your answer to (4) identifies the specific date in January of 2013 that boasted the worst, on average, arrival delays. From a sampling perspective, explain why it could be incorrect to argue that this was the worst day as far as flying from NY to Boston.
+
+
+1. Read the case of Abraham Wald (link at [https://medium.com/@penguinpress/an-excerpt-from-how-not-to-be-wrong-by-jordan-ellenberg-664e708cfc3d](https://medium.com/@penguinpress/an-excerpt-from-how-not-to-be-wrong-by-jordan-ellenberg-664e708cfc3d)), and tie into the measurement of airline delays. 
