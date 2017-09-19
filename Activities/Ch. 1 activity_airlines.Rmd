@@ -1,0 +1,80 @@
+---
+title: "Wanna get away?"
+date: "MS 204 Chapter 1"
+output: pdf_document
+fontsize: 12pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+### Summary
+
+Explore simple linear regression using the relationship between flight distance and flight cost.
+
+>> Ready for vacation? You and your group are prepared to fly to any *US* destination, and to do so, we’ll compare prices and distances of major US flights. Our goal is to understand the association between two continuous variables, and how correlation relates to regression. Flight prices – at least 10 per group - will be found online.  Each group will be assigned an airline, and flying has to be done from one of the three major NYC airports (EWR, JFK, LGA). We are looking at one-way flights only. For consistency's sake, let's leave on Saturday, October 21, and select the non-stop/one-way flight that leaves closest to 12:00 noon.
+
+**Your airline**:
+
+| City          | Distance      | Cost  |
+| ------------- |:-------------:| -----:|
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+|               |               |       |
+
+
+Here's some fake R code to generate a data frame with city, distance, and cost. Use this, as well as code from our notes, to obtain summary information regarding your data frame. 
+
+```{r}
+cities <- c("Boston", "Philly", "Memphis", "Norfolk")
+distance <- c(150, 100, 200, 125)
+cost <- c(100, 85, 117, 99)
+df.flights <- data.frame(cities, distance, cost)
+```
+
+1.	Make a scatter plot of your airline’s distances and prices using R, and roughly sketch your response below. 
+
+2.	Describe $r$ in the context of this question 
+
+3.  Find the slope of the regression line, and explain what the slope of the regression line means in this problem.
+
+4.  Find the y-intercept of the regression line, and explain what the y-intercept of the regression line means in this problem.
+
+5.  Write the equation of the linear model below, and use R to confirm that your slope and intercept estimates are correct. Hint: use the command `lm()` to find the line of best fit. 
+
+6.  Use the equation to estimate the fare for a 300-mile flight with your airline.  Is this a reasonable estimate?
+
+7.  Use the equation to estimate the fare for a 4000-mile flight with your airline.  Is this a reasonable estimate?
+
+8.  Roughly draw your line on the scatter plot. 
+
+9.  What is the estimated difference between the observed flight cost and the estimated flight cost for your first data point (the first city in your data frame)? This is called a residual. 
+
+**Formula**:  Residual = Observed - Expected
+
+10.  Which of your flights has the largest and smallest residuals? (You shouldn’t have to calculate all of them…think about how this can be avoided).  
+
+11. What do positive and negative residuals mean in the context of this problem?
+
+12. Aggregating across the class, which airlines have the most extreme intercepts and slopes? What does this suggest?
+
+
+
