@@ -1,0 +1,110 @@
+---
+title: "Introduction to multivariate thinking"
+output:
+  html_document
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+## Getting started
+
+### Load packages
+
+In this lab we will explore the data using the dplyr package and visualize it 
+using the ggplot2 package for data visualization. Our chosen data set is the `gapminder` data set, nicely set up in
+R via Jenny Bryan's `gapminder` package.
+
+Let's load the packages
+
+```{r load-packages, message=FALSE}
+library(dplyr)
+library(ggplot2)
+## install.packages(gapminder)
+library(gapminder)
+head(gapminder)
+```
+
+Our primary interest in this data set is to identify how life expectency has changed over time, and whether or not those changes have been consistency in each continent.
+
+### The data
+
+The gapminder data set contains six variables, each of which vary over time. As a warm-up and to refresh where we left off last time, answer the following questions.
+
+1. Use R code to identify the span of years (e.g., 1920 - 2006), the number of countries, and number of continents included in the gapminder data set.
+
+2. Use the `filter` command to find the gdp per capita of Norway in 1977. 
+
+3. Which continent boasted countries with the largest average life expectency in the year 2007?
+
+### Going further
+
+Let's start by identifying changes over time. One easy thing to do would be to look at a scatter plot
+
+```{r}
+qplot(year, lifeExp, data = gapminder)
+```
+
+Unfortunately, that scatter plot doesn't do a great job of accounting for overlap. There could be several points and all we'd see is one dot!
+
+There are a few ways to acocunt for this. One is to use the jitter command. Another is to use a different shading for each point -- instead of a complete black point, we can make each point transparent. 
+
+Try the following code.
+
+```{r}
+qplot(x = as.factor(year), y = lifeExp, data = gapminder, geom = "boxplot" ) +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+```
+
+4. Describe changes to the median life expectency across all countries over time.
+
+5. Describe changes to the shape of life expectency across all countries over time.
+
+6. Identify the point (or pair of points) that seem most outlandish. Use the `filter()` command to identify those countries. Any guesses? 
+
+7. Identify what `geom_jitter`, `position_jitter` and `alpha` do to the countries. Feel free to use Stack Overflow or the Help tab to get started.
+
+
+## Grouping and faceting
+
+Instead of considering each country on its own, let's see if there are any differences in the association between year and life expectency by continent.
+
+```{r}
+gapminder1 <- gapminder %>% filter(continent != "Oceania")
+qplot(x = year, y = lifeExp, group = country, color = country, data = gapminder1, show.legend = FALSE) +
+  geom_line(show.legend = FALSE) + 
+  facet_wrap(~ continent) +
+  scale_color_manual(values = country_colors) 
+```
+
+There is lots to unpack, but the visualization is quite interesting. 
+
+First, let's go step by step through the code. Above, there are steps that
+
+- filter out Oceania, which contains Australia and New Zealand (only two countries)
+- uses a different color for each country
+- adds a line graph
+- hides the legend for both points and lines (otherwise we'd see every country's color!)
+- uses a facet to show each continent on its own
+- uses a manual scale (`country_colors`), which is specific to this data set.
+
+8. How does accounting for continent change your perception of the increase in life expectency? Identify how the association between year and life expectency varies by continent.
+
+9. The graph also gives insight into differences between countries as far as life expectency. Which continent's show the least and greatest amount of variation?
+
+
+* * *
+
+## More Practice
+
+1. Make a graph showing the relationship between gdp per capita (x-axis) and life expectency, using all countries. Describe the association
+
+2. Create a new variable, `log.gdpPercap`, which is the log of gdp per capital. As a hint, you can quickly calculate logs using `log()`. Replicate your plot above, using `log.gdpPercap` in place of `gdpPercap`. What is the advantage of taking the log?
+
+3. Facet your graph above (the one using `log.gdpPercap`) so that you see one scatter plot for each year. How has the association between log gdp per capita and life expectency changed over time?
+
+
+  
