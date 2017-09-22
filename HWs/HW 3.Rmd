@@ -23,7 +23,7 @@ library(ggplot2)
 
 ### Part I: 
 
-Open Intro Chapter 1: 5.3, 5.6, 5.7, 5.9
+Open Intro: 5.3, 5.6, 5.7, 5.9
 
 ### Part II: 
 
