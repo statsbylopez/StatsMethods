@@ -1,0 +1,50 @@
+---
+title: "HW 3"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro Chapter 1: 5.3, 5.6, 5.7, 5.9
+
+### Part II: 
+
+Refer to the `gapminder` data as per the labs.
+
+1. Make a graph showing the relationship between gdp per capita (x-axis) and life expectency, using all countries. Describe the association
+
+2. One country stands out as not like all of the rest -- identify this country. 
+
+3. Create a new variable, `log.gdpPercap`, which is the log of gdp per capital. As a hint, you can quickly calculate logs using `log()`. Replicate your plot above, using `log.gdpPercap` in place of `gdpPercap`. What is the advantage of taking the log?
+
+4. Facet your graph above (the one using `log.gdpPercap`) so that you see one scatter plot for each year. How has the association between log gdp per capita and life expectency changed over time?
+
+5. Using only Gapminder data from 2007. Estimate the regression line of life expectency (response) versus gdp per capita (explanatory variable). You may either use summary statistics, or calculate directly using R. 
+
+6. Interpret the slope of the regression line in (5). 
+
+7. Interpret the intercept of the regression line in (6). 
+
+8. Find the residual for Afghanistan
+
+9. Refer to [http://guessthecorrelation.com/](http://guessthecorrelation.com/) for an addictive game of guessing the correlation using a scatter plot. Play as little or as often as you'd like, and provide your best score as an answer to this question. *Bonus*: Email your professor a screenshot of any score 100 or above for extra credit.
+
+10. Watch Hans Rosling's video on the gapminder data set, available at [https://www.youtube.com/watch?v=jbkSRLYSojo](https://www.youtube.com/watch?v=jbkSRLYSojo). Identify three interesting things you learn with respect to the evolution of life expectency versus income over time. 
