@@ -3,7 +3,7 @@ title: "HW 1"
 author: "Mike Lopez"
 date: "September 2017"
 output:
-  html_document
+  pdf_document
 ---
 
 ```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
