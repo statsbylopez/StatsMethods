@@ -7,7 +7,7 @@ output:
 ---
 
 ```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
-knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(eval = TRUE)
 library(dplyr)
 library(ggplot2)
 ```
