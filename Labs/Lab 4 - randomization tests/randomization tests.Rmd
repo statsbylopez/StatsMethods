@@ -1,0 +1,127 @@
+---
+title: "Introduction to randomization tests"
+output:
+  html_document
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+## Part I: Do you have ESP?
+
+Pair up with a partner. Write down (out of sight) one of the letters A, B, C, D, or E and try to telepathically communicate the choice to your partner.  Have your partner guess what letter you selected.
+
+Do this several times and then switch roles and do some more with you guessing your partners choices.  
+
+Keep track of the total number of tries and the number guessed correctly
+
+    n: 
+    
+    number correct: 
+    
+    proportion correct: 
+
+
+1. If there is no ESP and you were both just randomly guessing from among the five choices, what proportion of guesses would be correct? 
+
+2. Using your answer above, write the null and alternative hypotheses in words. 
+
+3. Write the null and alternative hypotheses in symbols. 
+
+4. Are we considering a one proportion or two proportion test?
+
+5. Is a one sided or two sided test most appropropriate for this example?
+
+
+### Entering our data
+
+In this lab we will explore chance models -- that is, what data were to look like if it were to be generated under some null hypothesis. 
+
+Let's load some packages we'll need
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(mosaic)
+```
+
+Below, enter your data and check that the observed proportion of correct guesses matches your findings above Note: you'll need to change the `esp.observed` line (unless you got 19 correct at 6 incorrect!!)
+
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+set.seed(0)
+esp.observed <- c(rep(0, 6), rep(1, 19))
+tally( ~ esp.observed)
+
+mean( ~ esp.observed)
+obs <- mean( ~ esp.observed)
+obs
+```
+
+### Developing a chance model
+
+Next, we need to simulate the proportion of correct guesses that would occur under the null hypothesis. 
+
+Note that we can use the `prob = 0.2` to adjust `rflip()` so that it uses a weighted coin with different proportions. 
+
+```{r}
+rflip(20, prob = 0.2)
+```
+
+6. As in our notes in class, develop a chance model that represents 1000 samples that we could expect under the null distribution.
+
+7. Graph the chance model, and visually identify if your pair's findings are surprising or not that surprising.
+
+8. Estimate a p-value for your pair's data.
+
+9. Summarize your findings
+
+
+
+
+
+## Part II: Gender discrimination in the workplace? 
+
+In 1972, as a part of a study on gender discrimination, 48 male bank supervisors were each given the same personnel file and asked to judge whether the person should be promoted to a branch manager job that was described as “routine”. The files were identical except that half of the supervisors had files showing the person was male while the other half had files showing the person was female. It was randomly determined which supervisors got “male” applications and which got “female” applications.
+Of the 24 male files reviewed, 21 were promoted (3 not promoted). Of the 24 female files reviewed, 14 were promoted (10 not promoted). 
+
+The study is testing whether females are unfairly discriminated against.
+
+
+1. If there is no discrimination, what would you expect the difference in promortion rates to be?
+
+2. Using your answer above, write the null and alternative hypotheses in words. 
+
+3. Write the null and alternative hypotheses in symbols. 
+
+4. Are we considering a one proportion or two proportion test?
+
+5. Is a one sided or two sided test most appropropriate for this example?
+
+
+### Entering our data
+
+In this lab we will explore chance models -- that is, what data were to look like if it were to be generated under some null hypothesis. 
+
+Refer to your notes from chapter 2 and enter in data reflecting the observed male and female promotion files
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+### Enter data here
+```
+
+### Developing a chance model
+
+Next, we need to simulate the difference in promortion rates between males and females that would occur under the null hypothesis. 
+
+6. As in our notes in class, develop a chance model that represents 1000 samples that we could expect under the null distribution.
+
+7. Graph the chance model, and visually identify if the bank's findings are surprising or not that surprising.
+
+8. Estimate a p-value for this data.
+
+9. Summarize your findings
+
+
+
