@@ -1,0 +1,71 @@
+---
+title: "HW 4"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro: 2.1, 2.2, 2.4, 2.5, 2.7, 2.9 - 2.13 (each of these)
+
+## Part II: Gender discrimination in the workplace? 
+
+In 1972, as a part of a study on gender discrimination, 48 male bank supervisors were each given the same personnel file and asked to judge whether the person should be promoted to a branch manager job that was described as “routine”. The files were identical except that half of the supervisors had files showing the person was male while the other half had files showing the person was female. It was randomly determined which supervisors got “male” applications and which got “female” applications.
+Of the 24 male files reviewed, 21 were promoted (3 not promoted). Of the 24 female files reviewed, 14 were promoted (10 not promoted). 
+
+The study is testing whether females are unfairly discriminated against.
+
+
+1. If there is no discrimination, what would you expect the difference in promortion rates to be?
+
+2. Using your answer above, write the null and alternative hypotheses in words. 
+
+3. Write the null and alternative hypotheses in symbols. Note that you can use the `$` symbol in Markdown files to identify mathematical notation. As an example, try $p_m$ and $p_f$
+
+4. Are we considering a one proportion or two proportion test?
+
+5. Is a one sided or two sided test most appropropriate for this example?
+
+
+### Entering our data
+
+In this lab we will explore chance models -- that is, what data were to look like if it were to be generated under some null hypothesis. 
+
+Refer to your notes from chapter 2 and enter in data reflecting the observed male and female promotion files
+
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
+### Enter data here
+```
+
+### Developing a chance model
+
+Next, we need to simulate the difference in promortion rates between males and females that would occur under the null hypothesis. 
+
+6. As in our notes in class, develop a chance model that represents 1000 samples that we could expect under the null distribution.
+
+7. Graph the chance model, and visually identify if the bank's findings are surprising or not that surprising.
+
+8. Estimate a p-value for this data.
+
+9. Summarize your findings using technical terms (such as p-value, null hypothesis, 0.05, etc). 
+
+10. Summarize your findings using non-technical terms (no more than 2 sentences, accessible for someone outside of statistics)
+
+
