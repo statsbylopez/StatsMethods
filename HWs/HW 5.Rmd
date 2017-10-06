@@ -1,0 +1,38 @@
+---
+title: "HW 5"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro: 2.15, 2.16, 2.17, 2.20, 2.24, 2.32, 2.33, 2.34, 2.35, 2.36
+
+For 2.15 and 2.16, you do not have to draw a graph. 
+
+## Part II: Gender discrimination in the workplace? 
+
+Use the `profiles` data set from the `okcupiddata` package. 
+
+1. Drop any observation with height less than 50 or greater than 90, and save this as a new data frame, `profiles1`. 
+
+2. Using your new data set, identify if the distribution of heights is normally distributed by using (i) a histogram and (ii) a qq plot.
+
+3. Repeat (1), only using a separate analysis for each gender. Do your conclusions match? 
