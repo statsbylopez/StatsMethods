@@ -1,0 +1,91 @@
+---
+title: "HW 3 solutions"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Open Intro: 5.3, 5.6, 5.7, 5.9
+
+### Part II: 
+
+Refer to the `gapminder` data as per the labs.
+
+1. Make a graph showing the relationship between gdp per capita (x-axis) and life expectency, using all countries. Describe the association
+
+**There is a moderately positive link between GDP and life expectency -- it appears logarithmic (curved)**
+
+2. One country stands out as not like all of the rest -- identify this country. 
+
+**Kuwait has a substantially higher GPD per capita relative to other countries**
+
+
+3. Create a new variable, `log.gdpPercap`, which is the log of gdp per capital. As a hint, you can quickly calculate logs using `log()`. Replicate your plot above, using `log.gdpPercap` in place of `gdpPercap`. What is the advantage of taking the log?
+
+**Taking the log 
+
+
+4. Facet your graph above (the one using `log.gdpPercap`) so that you see one scatter plot for each year. How has the association between log gdp per capita and life expectency changed over time?
+
+```{r}
+library(gapminder)
+library(tidyverse)
+gapminder <- gapminder %>% mutate(log.gdp = log(gdpPercap))
+qplot(y = lifeExp , x = log.gdp, data = gapminder) + facet_wrap(~year)
+```
+
+
+**Both life expectency and log gdp have increased over time -- the association appears to have gotten slightly stronger, potentially more logarithmic over time**
+
+5. Using only Gapminder data from 2007. Estimate the regression line of life expectency (response) versus gdp per capita (explanatory variable). You may either use summary statistics, or calculate directly using R. 
+
+**Note -- I did this for log gdp given that there's a plausible linear association with these variables. Answers were also acceptable without using log gdp**
+
+```{r}
+gap.2007 <- gapminder %>% filter(year == 2007)
+fit <- lm(lifeExp ~ log.gdp, data = gap.2007)
+summary(fit)
+```
+
+**The line of best fit is `lifeExp-hat = 4.9 + 7.2(log.gdp)`**
+
+6. Interpret the slope of the regression line in (5). 
+
+**For a one unit increase in log gdp, there's an estimated 4.9 year increase in life expectency**
+
+7. Interpret the intercept of the regression line in (6). 
+
+**Counties with a log gdp of 0 are expected to have a life expectency of 7.2 years**
+
+8. Find the residual for Afghanistan
+
+**Residual = observed - expected**
+
+**Observed value = 42.8, Expected = 4.9 + 7.2*6.9 = 54.3**
+
+**Residual = 42.8 - 54.3 = -11.5**
+
+**The life expectency for Afghanistan is about 11.5 years less than we expect
+
+
+9. Refer to [http://guessthecorrelation.com/](http://guessthecorrelation.com/) for an addictive game of guessing the correlation using a scatter plot. Play as little or as often as you'd like, and provide your best score as an answer to this question. *Bonus*: Email your professor a screenshot of any score 100 or above for extra credit.
+
+10. Watch Hans Rosling's video on the gapminder data set, available at [https://www.youtube.com/watch?v=jbkSRLYSojo](https://www.youtube.com/watch?v=jbkSRLYSojo). Identify three interesting things you learn with respect to the evolution of life expectency versus income over time. 
