@@ -1,0 +1,105 @@
+---
+title: "Notes: MS 204 Chapter 2 part III normal distribution"
+output: pdf_document
+fontsize: 11pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 4.3, fig.height = 3)
+```
+
+### Overview
+
+- Hypothesis testing review -- single versus two population proportions
+- Error types
+- Normal distribution
+
+
+#### Review of simulations & error types
+
+\newpage
+
+
+
+
+### Normal distribution
+
+#### Normal distribution with different parameters
+
+```{r, fig.height= 3, fig.width=5}
+library(tidyverse)
+x1 <- rnorm(10000, mean = 10, sd = 2)
+x2 <- rnorm(10000, mean = 40, sd = 5)
+qplot(c(x1, x2)) + xlab("Histograms of two normal distributions")
+```
+
+
+\vspace{50pt}
+
+#### Standardizing with z-scores
+
+SAT scores are normally distributed with mean 500 and standard deviation 100. (i) Draw a curve, (ii) find the percentage of scores below a 350, and (iii) identify what score would need to be obtained to ensure that 75 percent of the population lies below. 
+
+
+
+
+\vspace{150pt}
+
+
+\newpage 
+
+#### Rstats functions
+
+```{r}
+pnorm(350, mean = 500, sd = 100)
+pnorm(-1.5)
+```
+
+
+
+```{r}
+qnorm(.9, mean = 500, sd = 100)
+qnorm(.9)
+```
+
+#### Follow up example
+
+At the Heinz ketchup factory, the amount that goes in ketchup bottles is normally distributed with mean 36 oz and standard deviation 0.11 oz. A bottle is randomly selected. (i) How likely is it to have more than 35.9 ounces of ketchup? (ii) What percent of bottles will lie between 35.9 and 36.1 ounces of ketchup?  Solve using both diagrams, equations, and code.  
+
+
+\vspace{150pt}
+
+
+
+\newpage 
+
+#### 68-95-99.7 rule
+
+\vspace{50pt}
+
+
+```{r, fig.width = 5.3}
+library(okcupiddata)
+#?profiles ### gives you varible names
+profiles <- profiles %>% filter(height > 50, height < 85)
+qplot(height, data = profiles) + facet_wrap(~sex, scales = "free")
+profiles.sum <- profiles %>% 
+  group_by(sex) %>% 
+  summarise(ave.height = mean(height), sd.height = sd(height))
+profiles.sum
+
+profiles %>% 
+  filter(sex == "m") %>% 
+  mutate(one.sd = height > 70.44739 + (-1)*2.879944 & height < 70.44739 + (1)*2.879944, 
+         two.sd = height > 70.44739 + (-2)*2.879944 & height < 70.44739 + (2)*2.879944, 
+         three.sd = height > 70.44739 + (-3)*2.879944 & height < 70.44739 + (3)*2.879944) %>%
+  summarise(percent.one = mean(one.sd), 
+            percent.two = mean(two.sd), 
+            percent.three = mean(three.sd))
+```
+
+```{r, echo = FALSE, eval = FALSE}
+ggplot(data = filter(profiles, sex == "m")) + 
+  geom_histogram(aes(height, ..density..)) + 
+  stat_function(fun = dnorm, color = "red", args = list(mean = 70.44739, sd = 2.879944))
+```

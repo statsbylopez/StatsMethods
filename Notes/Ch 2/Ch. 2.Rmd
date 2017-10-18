@@ -1,0 +1,106 @@
+---
+title: "Notes: MS 204 Chapter 2"
+output: pdf_document
+fontsize: 11pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 3.4, fig.height = 2.4)
+```
+
+### Overview
+
+- Hypothesis testing framework
+- Simulating an experiment
+
+### An example
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(mosaic)
+seeded <- c(rep(0, 12), rep(1, 24), rep(0, 4), rep(1, 10))
+yawned <- c(rep(0, 36), rep(1, 14))
+Yawners <- data.frame(seeded, yawned)
+tally(yawned ~ seeded, Yawners)
+```
+
+
+
+#### Chapter 1 review:
+
+- Study type, variable types, sample/population
+
+\vspace{50pt}
+
+
+#### Possible claims
+
+
+
+\newpage
+
+## Hypothesis testing framework
+
+### Overview
+
+
+
+\vspace{150pt}
+
+### Details
+
+\vspace{150pt}
+
+
+
+### Simulation
+
+\newpage
+
+
+
+### Code
+
+
+
+```{r, message = FALSE, warning = FALSE}
+set.seed(10)
+seeded <- c(rep(0, 12), rep(1, 24), rep(0, 4), rep(1, 10))
+yawned <- c(rep(0, 36), rep(1, 14))
+
+Yawners <- data.frame(seeded, yawned)
+mean(yawned ~ seeded, data = Yawners)
+obs <- diff(mean(yawned ~ seeded, data = Yawners))
+obs
+
+
+diff(mean(yawned ~ shuffle(seeded), data = Yawners))
+
+diff(mean(yawned ~ shuffle(seeded), data = Yawners))
+
+yawn.null <- do(1000) * diff(mean(yawned ~ shuffle(seeded), data=Yawners))
+yawn.null %>% head()
+
+qplot(yawn.null) + geom_vline(aes(xintercept = obs), colour = "red")
+yawn.null %>% summarise(p.value = mean(X1 >= obs))
+```
+
+### Summary
+
+
+\vspace{50pt}
+
+
+\vspace{50pt}
+
+\vspace{50pt}
+
+### A note on coding
+
+```{r}
+set.seed(0)
+seeded <- c(rep(0, 12), rep(1, 24), rep(0, 4), rep(1, 10))
+yawned <- c(rep(0, 36), rep(1, 14))
+Yawners <- data.frame(seeded, yawned)
+tally(yawned ~ seeded, Yawners)
+```

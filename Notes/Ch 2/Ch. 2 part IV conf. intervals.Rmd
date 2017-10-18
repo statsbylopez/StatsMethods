@@ -1,0 +1,107 @@
+---
+title: "Notes: MS 204 Chapter 2 - confidence intervals"
+output: pdf_document
+fontsize: 11pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 4.3, fig.height = 3)
+```
+
+### Overview
+
+- Normal distribution review
+- Applying normal model
+
+#### 68-96-99.7 rule (previous notes)
+
+## Applying normal model
+
+**Central Limit Theorem**: 
+
+\vspace{100pt}
+
+**Standard error**: 
+
+\vspace{80pt}
+
+**Z-score in a hypothesis test**: 
+
+\vspace{80pt}
+
+\newpage
+
+#### Ex: Patriots (se = 0.10)
+
+\vspace{200pt}
+
+
+#### Ex: Yawning (se = 0.13)
+
+\newpage
+
+## Confidence intervals
+
+#### Analogy
+
+
+
+\vspace{200pt}
+
+
+1. What is best guess?
+
+2. More confidence -- wider or narrower?
+
+3. How probable is it that best guess is right?
+
+
+
+#### Ex: Patriots (se = 0.10)
+
+\vspace{100pt}
+
+
+#### Ex: Yawning (se = 0.13)
+
+
+\vspace{100pt}
+
+\newpage
+
+### Meaning of confidence
+
+```{r, fig.height= 5, fig.width=6}
+library(mosaic)
+set.seed(5)
+NFL.null <- do(50)*rflip(25, prob = 0.5)
+NFL.null <- NFL.null %>% 
+  mutate(upp = prop + 1.96*0.1, low = prop - 1.96*0.1, 
+         contains.null = upp > 0.5 & low < 0.5, 
+         id = 1:n())
+qplot(id, prop, data = NFL.null) + 
+  geom_errorbar(aes(ymin = low, ymax = upp, colour = contains.null, 
+                    lty = contains.null)) + 
+coord_flip() + 
+  labs(title = "50 simulated CIs, n = 25, p = 0.5", 
+       x = "Index", y = "Proportion") + 
+  geom_hline(aes(yintercept = 0.5))
+```
+
+
+### Changing the confidence level
+
+
+\vspace{180pt}
+
+### Incorrect language
+
+
+\vspace{180pt}
+
+
+### Example 
+
+Implanting a stent in the brain of a patient at risk for a stroke increased the risk of a stroke. The study estimate a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about 2.8%.Calculate 90, 95, and 99% confidence intervals for the effect of the stent
+	
+

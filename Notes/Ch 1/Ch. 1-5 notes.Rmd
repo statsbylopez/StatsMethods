@@ -1,0 +1,92 @@
+---
+title: "Notes: MS 204 Chapter 1/5"
+output: pdf_document
+fontsize: 11pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.height =2.5, fig.width = 4.5)
+```
+
+### Overview
+
+- Multivariate thinking
+
+## Simple linear regression
+
+Ex: $X$ = salary, $Y$ = SAT
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse); library(mosaic)
+SAT %>% summarise(cor.SAT = cor(sat, salary))
+qplot(x = salary, y = sat, data = SAT) + 
+  geom_smooth(method = "lm")
+fit <- lm(sat ~ salary, data = SAT)
+msummary(fit)
+```
+
+\newpage
+
+
+- Describe the association between salary and sat on a state-level basis
+
+
+\vspace{40pt}
+
+
+- Identify possible explanations for this finding 
+
+\vspace{60pt}
+
+
+
+- Write the estimated regression line
+
+
+\vspace{40pt}
+
+
+- Interpret the itercept and the slope in the context of this example
+
+
+\vspace{80pt}
+
+
+
+- Find the residual for Alabama, a state that pays teachers 31.1 thousand dollars per year and boasts an average SAT of 1029.
+
+
+
+\vspace{60pt}
+
+
+### Confounding variables
+
+\newpage
+
+
+
+## Thinking multivariately
+
+
+Ex: $X$ = salary, $Y$ = SAT
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse); library(mosaic)
+SAT <- SAT %>% mutate(frac.cat = cut_number(frac, 3))
+SAT %>% tail(5)                      
+SAT %>% 
+  group_by(frac.cat) %>% 
+  summarise(cor.SAT = cor(sat, salary))
+qplot(x = salary, y = sat, colour = frac.cat, lty = frac.cat, data = SAT) + 
+  geom_smooth(method = "lm")
+```
+
+
+- Describe the association between salary and sat on a state-level basis when taking into account the fration of each state that took the SAT
+
+
+\vspace{40pt}
+
+
+- Possible explanations

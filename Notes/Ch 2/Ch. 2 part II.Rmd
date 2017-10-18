@@ -1,0 +1,95 @@
+---
+title: "Notes: MS 204 Chapter 2 part II"
+output: pdf_document
+fontsize: 11pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 5, fig.height = 4)
+```
+
+### Overview
+
+- Hypothesis testing framework -- single proportion
+- Simulating an experiment -- single proportion
+
+### Motivating example
+
+**Lucky or good? Patriots winning coin tosses at nearly impossible rate**
+
+    The New England Patriots' continued struggles against tired "gate" 
+    suffixes reached a new nadir earlier this week when a statistical 
+    quirk regarding the team's pregame coin toss win rate became an actual 
+    topic of conversation. The Patriots have won 19 of their last 25 pregame 
+    coin flips, which is pretty remarkable considering the whole 50:50 odds thing.
+    
+
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(mosaic)
+tosses <- c(rep(0, 6), rep(1, 19))
+tally( ~ tosses)
+```
+
+General question: How likely is it for data as extreme as what is in the sample to occur under the null?
+
+Ex: How likely is it for the Patriots to win 19 or more coin tosses in 25 attempts if the coin toss was really a 50-50 proposition?
+
+### Setting the stage
+
+- Study type, variable types, sample/population
+
+\vspace{50pt}
+
+
+### Possible claims
+
+
+
+\vspace{150pt}
+
+
+
+### Simulation
+
+
+\vspace{120pt}
+
+
+
+### Additional hypothesis test notes
+
+
+\newpage
+
+
+
+```{r, message = FALSE, warning = FALSE}
+set.seed(0)
+tosses <- c(rep(0, 6), rep(1, 19))
+tally( ~ tosses)
+
+mean( ~ tosses)
+obs <- mean( ~ tosses)
+obs
+
+rflip(5, prob = 0.5)
+
+do(1)*rflip(25, prob = 0.5)
+
+NFL.null <- do(1000)*rflip(25, prob = 0.5)
+
+NFL.null %>% head()
+
+qplot(x = prop, data = NFL.null) + 
+  geom_vline(aes(xintercept = obs), colour = "red") + 
+  ggtitle("Proportion of won coin tosses in 25 attempts")
+  
+
+NFL.null %>% summarise(p.value = mean(prop >= obs))
+NFL.null %>% summarise(p.value = mean(prop >= obs)*2)
+```
+
+### Summary
+
