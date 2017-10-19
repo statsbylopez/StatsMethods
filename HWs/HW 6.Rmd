@@ -1,0 +1,47 @@
+---
+title: "HW 6"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Chapter 3 questions: 3.5, 3.6, 3.8, 3.9, 3.12 
+
+
+## Part II: Gender discrimination in the workplace? 
+
+Return to the `okcupiddata` package. 
+
+```{r}
+library(okcupiddata)
+library(tidyverse)
+```
+
+It is reported that among online dating sites, 60 percent of users are men. Our goal is to compare the sample profiles of OKCupid users to this threshold.
+
+1. State a null and alternative hypothesis.
+
+2. Test the claim that 60 percent of online dating site users are men using simulation based methods designed in Chapter 2.
+
+3. Test the claim that 60 percent of online dating site users are men using normal distribution assumptions from Chapter 3. Are conditions met to use the Normal distribution?
+
+4. Compare your results from the two questions above.
+
