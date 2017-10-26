@@ -1,0 +1,12 @@
+---
+title: "Lab 6: Inference for categorical data"
+runtime: shiny
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE, message = FALSE, warning = FALSE)
+```
+
+**Click [here](https://skidmore-ms-204.shinyapps.io/inf_for_categorical_data/) for a link to Lab 6. 

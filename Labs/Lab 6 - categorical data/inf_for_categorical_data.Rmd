@@ -26,7 +26,7 @@ library(oilabs)
 
 ### Creating a reproducible lab report
 
-To create your new lab report, copy and paste the raw Markdown report from the Github page. **For this lab in particular, it will be critical that you follow along with this code (in place of making your own lab file)**
+Make a new Markdown lab 6 file using the traditional format. As a warning, this particular lab is a bit dicey to do by directly copying and pasting code alone, as you'll soon see. 
 
 ### The survey
 
