@@ -1,0 +1,76 @@
+---
+title: "HW 7"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Chapter 4 questions: 4.1, 4.5, 4.8, 4.9, 4.14
+
+
+
+### Part II
+
+Return to Lab 6
+
+The question of atheism was asked by WIN-Gallup International in a similar 
+survey that was conducted in 2005. (We assume here that sample sizes have 
+remained the same.) Table 4 on page 13 of the report summarizes survey results 
+from 2005 and 2012 for 39 countries.
+
+For some of the exercises below we will conduct inference comparing two proportions. In
+such cases we have a response variable that is categorical, and an exaplanatory variable
+that is also categorical, and we are comparing the proportions of success of the response
+variable across the levels of the explanatory variable. This means, in the `inference` function
+we need to specify both variables, response as `y` and explanatory as `x`.
+
+```{r eval=FALSE}
+inference(y = name_of_response_variable, x = name_of_explanatory_variable, ...)
+```
+
+
+1.   Is there convincing evidence that Spain has seen a change in its atheism index 
+    between 2005 and 2012? Write out the hypotheses for any tests you 
+    conduct and outline the status of the conditions for inference. If you find a 
+    significant difference, also quantify this difference with a confidence interval. \
+    *Hint:* First create a new data set for respondents from Spain. Also, modify the
+    code for the inference function changing the type to run a hypothesis test and
+    adding arguments for the null value and the alternative hypothesis. See the help
+    for the `inference` function using `?inference` to determine the appropriate syntax.
+
+2.   Is there convincing evidence that the US has seen a change in its atheism index 
+    between 2005 and 2012? As always, write out the hypotheses for any tests you 
+    conduct and outline the status of the conditions for inference. If you find a 
+    significant difference, also quantify this difference with a confidence interval.
+
+3.   If in fact there has been no change in the atheism index in the countries 
+    listed in Table 4, in how many of those countries would you expect to 
+    detect a change (at a significance level of 0.05) simply by chance?\
+    *Hint:* Review the definition of the Type 1 error.
+
+4.   Suppose you're hired by the local government to estimate the proportion of 
+    residents that attend a religious service on a weekly basis. According to 
+    the guidelines, the estimate must have a margin of error no greater than 
+    1% with 95% confidence. You have no idea what to expect for $p$. How many 
+    people would you have to sample to ensure that you are within the 
+    guidelines?\
+    *Hint:* Refer to an earlier plot of the relationship between $p$ and margin of 
+    error. This question does not require using the dataset.
