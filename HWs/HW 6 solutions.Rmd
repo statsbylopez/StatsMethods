@@ -1,0 +1,71 @@
+---
+title: "HW 6"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+### Part I: 
+
+Chapter 3 questions: 3.5, 3.6, 3.8, 3.9, 3.12  
+
+
+3.8
+
+a. Z-score * SE = 1.96 * sqrt(.66*(1-0.66))/1018 = 0.03
+
+b. No: The confidence interval for the true proportion of adults who believe licensed drivers should be required to retake their road test is (0.63,0.69), which is not greater than 70%.
+
+3.12 	
+
+a. sample statistic; comes from the data
+b. Lower bound: 0.48-1.96 * sqrt(.48*(1-0.48)/1259 ) = 0.452
+	
+Upper bound: 0.48+1.96 * sqrt(.48*(1-0.48)/1259 ) = 0.508
+
+We are 95% confidence the true proportion of Americans who think marijuana should be legal is between 45.2% and 50.8%.
+
+c. Yes: there is a large enough sample size here (10 successes, 10 failures), and we can assume independence from this survey type
+
+d. While it’s possible the majority of Americans believe this statement, it’s also possible that the majority of Americans do not believe this statement because the confidence interval contains 50%. This statement is not justified
+
+
+
+
+## Part II: Gender discrimination in the workplace? 
+
+Return to the `okcupiddata` package. 
+
+```{r}
+library(okcupiddata)
+library(tidyverse)
+```
+
+It is reported that among online dating sites, 60 percent of users are men. Our goal is to compare the sample profiles of OKCupid users to this threshold.
+
+1. State a null and alternative hypothesis.
+
+2. Test the claim that 60 percent of online dating site users are men using simulation based methods designed in Chapter 2.
+
+3. Test the claim that 60 percent of online dating site users are men using normal distribution assumptions from Chapter 3. Are conditions met to use the Normal distribution?
+
+4. Compare your results from the two questions above.
+
+
+```{r}
+library(okcupiddata)
+library(tidyverse)
+library(mosaic)
+prop.test(~ sex, data = profiles, p = 0.6, success = "m")
+null <- do(1000)*rflip(59946, prob = 0.6)
+qplot(null$prop)
+mean(null$prop <= 0.5976879)
+```
+
