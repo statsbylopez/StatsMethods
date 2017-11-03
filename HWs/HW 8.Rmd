@@ -1,0 +1,54 @@
+---
+title: "HW 8"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Chapter 4 questions: 4.16, 4.18, 4.19, 4.21, 4.30
+
+
+
+### Part II
+
+Return to Lab 7 and the `nc` data set
+
+1.  Calculate a 95% confidence interval for the average length of pregnancies 
+(`weeks`) and interpret it in context. Confirm this answer by hand (use the sample mean, sample standard deviation, and sample size, along with a critical t value). 
+
+2.  Calculate a new confidence interval for the same parameter at the 90% 
+confidence level. You can change the confidence level by adding a new argument 
+to the function: `conf_level = 0.90`. Comment on the width of this interval versus 
+the one obtained in the previous exercise.
+
+3.  Conduct a hypothesis test evaluating whether the average weight gained by 
+younger mothers is different than the average weight gained by mature mothers. Confirm this answer by hand (using each sample mean and each sample standard deviation, as well as each sample size)
+
+4.  Now, a non-inference task: Determine the age cutoff for younger and mature 
+mothers. Use a method of your choice, and explain how your method works. It is not sufficient to look this answer up in the data. 
+
+5. Pick a pair of variables: one numerical (response) and one categorical (explanatory). 
+Come up with a research question evaluating the relationship between these variables. 
+Formulate the question in a way that it can be answered using a hypothesis test
+and/or a confidence interval. Answer your question using the `inference` 
+function, report the statistical results, and also provide an explanation in 
+plain language. Be sure to check all assumptions, state your $\alpha$ level, and conclude 
+in context.
