@@ -1,0 +1,54 @@
+---
+title: "HW 8 solutions"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+### Part I
+
+**4.30: We’ll use a two-sample t-test for the difference in the mean MPG between automatic and manual cars. 
+The point estimate is 19.85-16.12 = 3.73. The standard error is sqrt(3.582/26+4.512/26) = 1.13. 
+The test statistic is t = (3.73 – 0)/ 1.13 = 3.3, with a p-value of `2*(1-pt(3.3, df = 25)) = 0.003`. The degrees of freedom is 25. Given this result, there is strong evidence that there’s a difference in the MPG between automatic and manual cars.**
+
+
+### Part II
+
+Return to Lab 7 and the `nc` data set
+
+1.  Calculate a 95% confidence interval for the average length of pregnancies 
+(`weeks`) and interpret it in context. Confirm this answer by hand (use the sample mean, sample standard deviation, and sample size, along with a critical t value). 
+
+```{r}
+library(tidyverse)
+library(oilabs)
+data(nc)
+inference(y = weeks, data = nc, type = "ci", method = "theoretical", statistic = "mean")
+nc %>% summarise(ave.weeks = mean(weeks, na.rm = TRUE), sd.weeks = sd(weeks, na.rm = TRUE))
+qt(df = 999, .025)
+38.33 - 1.96*2.9315/sqrt(1000)
+38.33 + 1.96*2.9315/sqrt(1000)
+```
+
+
+**We are 95 percent confidence that the true length of pregnancy lies between 38.14 and 38.52 weeks. Our answers using R and by hand are identical**
+
+
+
+4.  Now, a non-inference task: Determine the age cutoff for younger and mature 
+mothers. Use a method of your choice, and explain how your method works. It is not sufficient to look this answer up in the data. 
+
+**The age cutoff is 35 years or above for mature mothers -- you can use several different code types for this. As an example:**
+
+```{r}
+nc %>% group_by(mature) %>% summarise(age.min = min(mage, na.rm = TRUE), age.max = max(mage, na.rm = TRUE))
+```
+
+
