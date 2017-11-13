@@ -1,0 +1,65 @@
+---
+title: "HW 9"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+Chapter 5 questions: 5.2, 5.3, 5.8, 5.17, 5.18, 5.20
+
+
+
+### Part II
+
+Return to Lab 8 and the `mlb11` data set
+
+
+
+1.  Choose another one of the seven traditional variables from `mlb11` besides 
+    `at_bats` that you think might be a good predictor of `runs`. Produce a 
+    scatterplot of the two variables and fit a linear model. At a glance, does 
+    there seem to be a linear relationship?
+
+2.  How does this relationship compare to the relationship between `runs` and 
+    `at_bats`? Use the $R^2$ values from the two model summaries to compare. 
+    Does your variable seem to predict `runs` better than `at_bats`? How can you
+    tell?
+
+3.  Now that you can summarize the linear relationship between two variables, 
+    investigate the relationships between `runs` and each of the other five 
+    traditional variables. Which variable best predicts `runs`? Support your 
+    conclusion using the graphical and numerical methods we've discussed (for 
+    the sake of conciseness, only include output for the best variable, not all 
+    five).
+
+4.  Now examine the three newer variables: `new_onbase`, `new_slug`, and `new_obs`. 
+
+    These are the statistics used by [the  central character](https://en.wikipedia.org/wiki/Paul_DePodesta) in *Moneyball* to predict a team's success.      
+   
+    In general, are they more 
+    or less effective at predicting runs that the old variables? Explain using 
+    appropriate graphical and numerical evidence. Of all ten variables we've 
+    analyzed, which seems to be the best predictor of `runs`? Using the limited 
+    (or not so limited) information you know about these baseball statistics, 
+    does your result make sense?
+
+5.  Check the model diagnostics for the regression model with the variable you 
+    decided was the best predictor for runs.
