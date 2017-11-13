@@ -1,0 +1,63 @@
+---
+title: "HW 7 solutions"
+author: "Mike Lopez"
+date: "September 2017"
+output:
+  html_document
+---
+
+```{r global_options, include=FALSE, message=FALSE, warning = FALSE}
+knitr::opts_chunk$set(eval = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(ggplot2)
+```
+
+***General instructions for homeworks***: 
+
++  Make a new R Markdown file (.Rmd) referring to thea assignment on the course Github page
++  Change the heading to include your author name
++  Save the R Markdown file (named as:  [MikeID]-[Homework01].Rmd -- e.g. "mlopez-Lab01.Rmd") to somewhere where you'll be able to access it later (zip drive, My Documents, Dropbox, etc)
++  Your file should contain the code/commands to answer each question in its own code block, which will also produce plots that will be automatically embedded in the output file
++  **Each answer must be supported by written statements (unless otherwise specified) as well as any code used**: In other words, if the answer is `24`, you should write "The answer is 24" (as opposed to just showing the code and output).
++  Include the names of anyone you collaborated with at the top of the assignment
+
+### Part I: 
+
+
+**4.8: the confidence interval using the t distribution will be wider**
+
+**4.14: No -- Yes -- No**
+
+
+
+
+2.   Is there convincing evidence that the US has seen a change in its atheism index 
+    between 2005 and 2012? As always, write out the hypotheses for any tests you 
+    conduct and outline the status of the conditions for inference. If you find a 
+    significant difference, also quantify this difference with a confidence interval.
+
+```{r}
+library(oilabs)
+data("atheism")
+us.all <- atheism %>% filter(nationality == "United States")
+tally(response ~ year, data = us.all)
+inference(y = response, x = as.factor(year), data = us.all, type = "ht", 
+          method = "theoretical", statistic = "proportion", 
+          alternative = "twosided", success = "atheist")
+inference(y = response, x = as.factor(year), data = us.all, type = "ci", 
+          method = "theoretical", statistic = "proportion", 
+          alternative = "twosided", success = "atheist")
+```
+
+**Ho: no change in the atheism index**
+
+**Ha: the rate of atheists in the US in 2005 is different than the rate in 2012.**
+
+**We barely meet assumptions for inference with the small number of atheists in 2005. However, there's significant evidence that the rate of atheists in 2012 is higher than in 2005. We can be 95 percent confident that the rate of atheism has gone up by between 2.5 percent and 5.5 percent**
+
+3.   If in fact there has been no change in the atheism index in the countries 
+    listed in Table 4, in how many of those countries would you expect to 
+    detect a change (at a significance level of 0.05) simply by chance?\
+    *Hint:* Review the definition of the Type 1 error.
+    
+**about 5% of countries would be expected to show different rates at the 5 percent level. With 57 countries, we could expect a few (2 or 3) just due to chance alone).**
