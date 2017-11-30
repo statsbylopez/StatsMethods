@@ -51,7 +51,7 @@ evals %>%
   summarise(ave.eval.rate = mean(cls_did_eval), sd.eval.rate = sd(cls_did_eval), n = n())
 ```
 
-4. The language department at Texas is curious if there are any differences in the rates of native-english speakers (`langauge) given the class level (`cls_level`), which is defined as either upper of lower. Test whether or not there is a difference in the percentage of english speakers by class level. 
+4. The language department at Texas is curious if there are any differences in the rates of native-english speakers (`langauge`) given the class level (`cls_level`), which is defined as either upper of lower. Test whether or not there is a difference in the percentage of english speakers by class level. 
 
 ```{r}
 evals %>% 
