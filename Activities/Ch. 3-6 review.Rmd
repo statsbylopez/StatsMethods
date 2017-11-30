@@ -87,7 +87,7 @@ evals <- evals %>%
 
 qplot(x = bty_avg, y = score, data = evals, geom = "jitter")
 
-fit <- lm(score ~ bty_avg  + gender, data = evals)
+fit <- lm(score ~ bty_avg  + bty_avg_sq +  gender, data = evals)
 summary(fit)
 
 ```
