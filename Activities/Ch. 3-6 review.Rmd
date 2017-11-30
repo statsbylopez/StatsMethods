@@ -1,0 +1,94 @@
+---
+title: "Is yawning contagious?"
+date: "MS 204 Chapter 1"
+output: pdf_document
+fontsize: 12pt 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+### Summary
+
+```{r}
+library(oilabs)
+library(mosaic)
+data(evals)
+head(evals)
+```
+
+We'll be working with the `evals` data set, which, as a reminder, contains evaluation information from the University of Texas in Austin. 
+
+For each of the following questions, assume a significance level of 95 percent.
+
+- identify the appropriate hypothesis, using words and/or symbols
+- state any assumptions required to do inference, and identify if those assumptions are met
+- perform the test using the appropriate commands, either using R or by hand. For procedures involving the $t$-distribution, make sure to note the degrees of freedom. 
+- state appropriate conclusions, both techinical (reject/fail to reject, identification of p-value) and non-techical
+
+For the test, you should be comfortable handling each of these questions **either** by hand or using R. 
+
+## Hypothesis tests
+
+1. Education codes require that 55 percent or fewer classes are taught by male professors, and Texas is worried that their male professor rates are too high. Test the hypothesis that 55 percent of courses are taught by male professors. 
+
+```{r}
+tally(~gender, data = evals)
+```
+
+2. Having not taken the regression unit of statistics class, a student is interested in testing the overall average score by each gender. Create a 95 percent confidence interval for the average difference in evaluation score (`score`) by professor gender. 
+```{r}
+evals %>% 
+  group_by(gender) %>% 
+  summarise(ave.score = mean(score), sd.score = sd(score), n = n())
+```
+
+3. School officials are curious as to the fraction of Texas students in each course that fill out evaluations. Using data from past years, officials hypothesize that the average rate of filling out evaluations should be around 40 percent. Using this data, test the claim that the average rate of students that fill out professor evaluations is 40 percent. 
+
+```{r}
+evals %>% 
+  summarise(ave.eval.rate = mean(cls_did_eval), sd.eval.rate = sd(cls_did_eval), n = n())
+```
+
+4. The language department at Texas is curious if there are any differences in the rates of native-english speakers (`langauge) given the class level (`cls_level`), which is defined as either upper of lower. Test whether or not there is a difference in the percentage of english speakers by class level. 
+
+```{r}
+evals %>% 
+  group_by(cls_level) %>% 
+  summarise(rate.english = mean(language == "english"), n.classes = n())
+
+tally(language ~ cls_level, data = evals)
+```
+
+
+## Additional questions
+
+1. Using the teacher evaluation data set, design a question that **could** have been asked that would have required using a paired $t$-test, as in Chapter 4.2 of our book. You do not need to carry out this test. 
+
+2. A professor uses the following code. Run it, and answer the following questions. 
+
+```{r}
+evals <- evals %>% 
+  mutate(bty_avg_sq = bty_avg^2)
+
+qplot(x = bty_avg, y = score, data = evals, geom = "jitter")
+
+fit <- lm(score ~ bty_avg  + gender, data = evals)
+summary(fit)
+
+```
+
+- Identify the new variable, and use the scatter plot to propose why the professor created this new variable
+
+- Write the estimated regression line
+
+- Interpret the coefficient for `gender` in the regression model. 
+
+- Interpret the R-squared in the regression model.
+
+- Professor Lopez is a male who is 35 years old, with a beauty average of 5 and an evaluation score of 4.3. Estimate his residual
+
+- Is it worth keeping the quadratic term in the model?
+
+- Check assumptions for the fit above, and compare to a fit that does not include a quadratic term for age. Which seems to more likely meet the assumptions of a linear model?
