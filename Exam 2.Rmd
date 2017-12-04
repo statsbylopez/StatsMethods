@@ -64,7 +64,7 @@ head(profiles)
 
 
 8. Consider the sample of Okcupid uses in this data. How does that impact the generalizability of your findings above? 
-
+ 
 
 **Questions 9-13 will use multiple regression. Please return to the `profiles.new` that was created above**
 
